@@ -1,3 +1,5 @@
+import dj_database_url
+import os
 """
 Django settings for principal project.
 
@@ -25,7 +27,8 @@ SECRET_KEY = 'django-insecure-ca1kz9%q0hcxcqb0+=)k84@&i)i32#7)iz_rmct0o%7%b))6#8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# settings.py
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,17 +80,20 @@ WSGI_APPLICATION = 'principal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
+DATABASE_LOCAL_URL = 'postgres://postgres:admin1234@localhost:5432/agromarket_db'
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'agromarket_db',       
-        'USER': 'postgres',            
-        'PASSWORD': 'admin1234',  
-        'HOST': 'localhost',          
-        'PORT': '5432',                
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL', DATABASE_LOCAL_URL),
+        conn_max_age=600
+    )
 }
 
+if not DEBUG: 
+    DATABASES['default']['OPTIONS'] = {
+        'sslmode': 'require',
+    }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
