@@ -45,10 +45,10 @@ Para correr este proyecto en tu máquina local, sigue estos pasos:
 ### 1. Levantar el Backend (API)
 ```bash
 # Clonar el repositorio
-git clone [https://github.com/tu-usuario/agromarket.git](https://github.com/tu-usuario/agromarket.git)
+git clone https://github.com/danielaportoa/agromarket.git
 
 # Entrar a la carpeta del backend
-cd agromarket
+cd backend_agromarket
 
 # Crear y activar entorno virtual (Mac/Linux)
 python3 -m venv venv
