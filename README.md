@@ -33,7 +33,6 @@ A diferencia de las aplicaciones monolíticas tradicionales, este proyecto separ
 * Tailwind CSS (Vía CDN con configuración personalizada)
 
 ## ⚙️ Arquitectura
-
 El proyecto consta de dos partes independientes:
 1. **API (Django):** Se encarga de la base de datos, la seguridad y de servir los datos en formato JSON.
 2. **Cliente (HTML/JS):** Se encarga del diseño, la experiencia de usuario y de solicitar los datos al servidor.

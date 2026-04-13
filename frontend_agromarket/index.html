@@ -9,8 +9,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script src="asset/js/tailwind-config.js"></script>
-</head>
 
+  
 <body class="bg-fondo text-tierra font-sans flex flex-col min-h-screen">
 
     <nav class="bg-agro text-white p-4 shadow-md">
@@ -34,69 +34,7 @@
         <p>&copy; 2026 Daniela Porto - Soluciones Tecnológicas para el Agro</p>
     </footer>
 
-    <script>
-
-        const API_URL = 'http://127.0.0.1:8000/api/productos/';
-
-        async function cargarProductos() {
-            const contenedor = document.getElementById('contenedor-productos');
-
-            try {
-                const respuesta = await fetch(API_URL);
-                const productos = await respuesta.json();
-
-                contenedor.innerHTML = '';
-
-                if (productos.length === 0) {
-                    contenedor.innerHTML = '<p class="col-span-3 text-center text-gray-500 text-xl">Aún no hay productos en la tienda.</p>';
-                    return;
-                }
-
-                productos.forEach(producto => {
-
-                    const etiquetaOrganico = producto.certificado_organico
-                        ? `<span class="bg-agro text-white text-xs px-2 py-1 rounded-full shadow-sm">🌱 Orgánico</span>`
-                        : '';
-
-                    const imagenProducto = producto.imagen 
-                        ? `<img src="${producto.imagen}" alt="${producto.nombre}" class="w-full h-48 object-cover">` 
-                        : `<div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 font-bold">Sin foto</div>`;
-
-                    const tarjetaHTML = `
-                        <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-100 hover:shadow-lg hover:border-agro-light transition-all duration-300 flex flex-col h-full">
-                            <div class="flex justify-between items-start mb-2">
-                                <h2 class="text-xl font-bold text-tierra">${producto.nombre}</h2>
-                                ${etiquetaOrganico}
-                            </div>
-                            
-                            <p class="text-gray-600 text-sm mb-4 flex-grow">${producto.descripcion}</p>
-                            
-                            <div class="mt-auto border-t border-gray-100 pt-4 flex justify-between items-center">
-                                <span class="text-2xl font-extrabold text-agro">$${producto.precio}</span>
-                                <button class="bg-tierra text-white px-4 py-2 rounded hover:bg-agro transition-colors duration-300 font-semibold shadow-sm">
-                                    Añadir
-                                </button>
-                            </div>
-                        </div>
-                    `;
-
-                    contenedor.innerHTML += tarjetaHTML;
-                });
-
-            } catch (error) {
-                console.error("Error al obtener los productos:", error);
-                contenedor.innerHTML = `
-                    <div class="col-span-3 text-center p-8 bg-red-50 text-red-600 rounded-lg border border-red-200">
-                        <p class="text-xl font-bold">¡Oops! No pudimos conectar con el servidor.</p>
-                        <p class="mt-2">Revisa la consola (Click derecho -> Inspeccionar -> Console) para ver el detalle del error.</p>
-                    </div>
-                `;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', cargarProductos);
-    </script>
-
+    <script src="asset/js/main.js"></script>
 
 </body>
 
