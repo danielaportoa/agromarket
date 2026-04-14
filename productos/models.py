@@ -22,7 +22,7 @@ class Producto(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=0) # Ideal para CLP
     stock = models.IntegerField(default=0)
-    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
+    imagen_url = models.URLField(max_length=500, blank=True, null=True)
     
     # Atributos de Sustentabilidad
     es_certificado_organico = models.BooleanField(default=False)
