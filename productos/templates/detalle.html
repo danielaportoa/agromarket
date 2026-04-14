@@ -1,0 +1,24 @@
+<div class="sustentabilidad-card" style="border: 2px solid #28a745; padding: 20px; border-radius: 10px;">
+    <h3>🌱 Atributos de Sustentabilidad</h3>
+    
+    <div class="certificaciones-iconos">
+        {% for cert in producto.certificaciones.all %}
+            <span class="badge badge-success" title="{{ cert.descripcion }}">
+                {{ cert.nombre }}
+            </span>
+        {% empty %}
+            <p><small>Este producto está en proceso de certificación.</small></p>
+        {% endfor %}
+    </div>
+
+    <hr>
+
+    <p><strong>Distancia de origen:</strong> {{ producto.distancia_km }} km</p>
+    <p><strong>Huella de Carbono estimada:</strong> 
+        <span class="text-success"><strong>{{ producto.huella_carbono_estimada }} kg de CO2</strong></span>
+    </p>
+    
+    {% if producto.kilometro_cero %}
+        <p class="text-primary">✨ <strong>¡Producto Kilómetro Cero!</strong> Apoyando a productores de Ñuble.</p>
+    {% endif %}
+</div>
