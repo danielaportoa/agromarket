@@ -81,20 +81,24 @@ WSGI_APPLICATION = 'principal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+DATABASE_URL_RENDER = 'postgres://agromarket_db_user:p8LgnJzvFTKYZLYaMOUTIuk7DHSwJbKR@dpg-d7bcggvkijhs738bn8m0-a.oregon-postgres.render.com/agromarket_db'
 
-DATABASE_LOCAL_URL = 'postgres://postgres:admin1234@localhost:5432/agromarket_db'
+# settings.py
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', DATABASE_LOCAL_URL),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'agromarket_db',
+        'USER': 'agromarket_db_user',
+        'PASSWORD': 'p8LgnJzvFTKYZLYaMOUTIuk7DHSwJbKR',
+        'HOST': 'dpg-d7bcggvkijhs738bn8m0-a.oregon-postgres.render.com',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
+    }
 }
 
-if not DEBUG: 
-    DATABASES['default']['OPTIONS'] = {
-        'sslmode': 'require',
-    }
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
