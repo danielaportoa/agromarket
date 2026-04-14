@@ -12,6 +12,7 @@ class Certificacion(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
     icono = models.ImageField(upload_to='certificaciones/', null=True, blank=True)
+    icono_url = models.URLField(max_length=500, blank=True, null=True)
 
     def __str__(self):
         return self.nombre
@@ -22,6 +23,7 @@ class Producto(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=0) # Ideal para CLP
     stock = models.IntegerField(default=0)
+    imagen = models.ImageField(upload_to='productos/', null=True, blank=True)
     imagen_url = models.URLField(max_length=500, blank=True, null=True)
     
     # Atributos de Sustentabilidad

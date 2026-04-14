@@ -9,7 +9,7 @@ class CategoriaSerializer(serializers.ModelSerializer):
 class CertificacionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Certificacion
-        fields = ['id', 'nombre', 'descripcion', 'icono']
+        fields = ['id', 'nombre', 'descripcion', 'icono', 'icono_url']
 
 class ProductoSerializer(serializers.ModelSerializer):
     categoria = CategoriaSerializer(read_only=True)
